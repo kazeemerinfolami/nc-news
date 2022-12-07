@@ -120,7 +120,32 @@ nav li {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    flex-wrap: wrap;
+}
 
+.articles-card p {
+    font-size: 18px;
+}
+
+.articles-card .article-body {
+    margin-bottom: 30px;
+}
+
+/* comments */
+.comments-container {
+    border-top: 2px dotted rgb(2, 51, 20);
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.comments-container .comments-dropdown-con {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.no-comment {
+    text-align: center;
 }
 
 /* media query */

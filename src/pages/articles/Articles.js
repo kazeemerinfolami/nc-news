@@ -14,7 +14,7 @@ function Articles() {
           return (
             <li key={article.article_id}>
               <Link to={`/articles/article/${article.article_id}`}>
-                <h1>{article.title}</h1>
+                <h1>Topic: {article.title}</h1>
                 <h2>{article.topic}</h2>
                 <p>
                   {article.body.substring(0, 90)}
@@ -22,7 +22,9 @@ function Articles() {
                 </p>
                 <h2>Author: {article.author}</h2>
                 <section>
-                  <p>{article.created_at}</p>
+                  <p>
+                    Created at: {new Date(article.created_at).toLocaleString()}
+                  </p>
                   <p>Votes: {article.votes}</p>
                 </section>
               </Link>
