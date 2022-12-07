@@ -14,3 +14,9 @@ export const getTitles = () => {
     return data;
   });
 };
+
+export const getArticle = (article_id) => {
+  return API.get(`/articles/${article_id}`).then(({ data }) => {
+    return data;
+  });
+};

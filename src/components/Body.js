@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 
 function Body({ children, pageName }) {
   const [ifLoggedin, setifLoggedin] = useState(!false);
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("light");
 
   return (
     <div className="container">
