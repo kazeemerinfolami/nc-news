@@ -4,6 +4,7 @@ import { getArticle, getComments } from "../../API/api";
 import Body from "../../components/Body";
 import Loading from "../../components/Loading";
 import Comments from "./comments/Comments";
+import VoteInc from "./votes/VoteInc";
 
 function Article() {
   const [article, setArticle] = useState({});
@@ -38,7 +39,7 @@ function Article() {
                 <span>{new Date(article.created_at).toLocaleString()}</span>
               </p>
               <p>
-                Votes: <span>{article.votes}</span>
+                <VoteInc articleCount={article.votes} />
               </p>
             </section>
             <div className="comments-container">

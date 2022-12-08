@@ -1,9 +1,15 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { PageContext } from "../PageContextProvider";
 
 function Body({ children, pageName }) {
-  const [ifLoggedin, setifLoggedin] = useState(!false);
   const [mode, setMode] = useState("light");
+  const { userDataLocalStorage, ifLoggedin } = useContext(PageContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.reload(false);
+  };
 
   return (
     <div className="container">
@@ -66,8 +72,19 @@ function Body({ children, pageName }) {
               </li>
             )}
             {ifLoggedin ? (
-              <li>
-                <Link>userName</Link>
+              <li className="username">
+                {userDataLocalStorage ? (
+                  <img
+                    className="icon-img"
+                    src={userDataLocalStorage.avatar_url}
+                    alt={userDataLocalStorage.name}
+                  />
+                ) : null}
+                {userDataLocalStorage ? (
+                  <h4>{userDataLocalStorage.name}</h4>
+                ) : (
+                  "Username"
+                )}
               </li>
             ) : (
               <li>
@@ -77,13 +94,13 @@ function Body({ children, pageName }) {
                     isActive ? "isActive" : undefined
                   }
                 >
-                  Users/login
+                  Login
                 </NavLink>
               </li>
             )}
             {ifLoggedin ? (
-              <li>
-                <Link>logout</Link>
+              <li className="logout" onClick={handleLogout}>
+                Logout
               </li>
             ) : null}
           </ul>
