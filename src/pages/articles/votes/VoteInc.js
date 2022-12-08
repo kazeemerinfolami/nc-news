@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { patchArticleVote } from "../../../API/api";
-import { PageContext } from "../../../PageContextProvider";
+// import { PageContext } from "../../../PageContextProvider";
 
 function VoteInc({ articleCount }) {
   const [count, setCount] = useState(0);
@@ -9,7 +9,7 @@ function VoteInc({ articleCount }) {
   const [hasVoted, sethasVoted] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
-  const { ifLoggedin } = useContext(PageContext);
+  // const { ifLoggedin } = useContext(PageContext);
 
   const { article_id } = useParams();
   useEffect(() => {
@@ -40,17 +40,15 @@ function VoteInc({ articleCount }) {
   return (
     <>
       Votes: <span>{voteCount}</span>
-      {ifLoggedin ? (
-        <div className="vote-container">
-          {errMessage ? <h4>{errMessage}</h4> : null}
-          <span className="incVote" onClick={increment}>
-            {count === 1 && hasVoted === true ? "✓" : "+"}
-          </span>
-          <span className="decVote" onClick={decrement}>
-            -
-          </span>
-        </div>
-      ) : null}
+      <div className="vote-container">
+        {errMessage ? <h4>{errMessage}</h4> : null}
+        <span className="incVote" onClick={increment}>
+          {count === 1 && hasVoted === true ? "✓" : "+"}
+        </span>
+        <span className="decVote" onClick={decrement}>
+          -
+        </span>
+      </div>
     </>
   );
 }
