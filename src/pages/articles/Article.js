@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { getArticle, getComments } from "../../API/api";
 import Body from "../../components/Body";
 import Loading from "../../components/Loading";
+import { PageContext } from "../../PageContextProvider";
 import Comments from "./comments/Comments";
 import VoteInc from "./votes/VoteInc";
 
@@ -11,6 +12,8 @@ function Article() {
   const [comments, setComments] = useState([]);
   const [openComments, setOpenComments] = useState(false);
   const { article_id } = useParams();
+
+  const { ifLoggedin } = useContext(PageContext);
 
   useEffect(() => {
     getArticle(article_id).then(({ article }) => {
@@ -23,6 +26,15 @@ function Article() {
   return (
     <Body pageName="Article">
       <ul className="articles-card">
+        {!ifLoggedin ? (
+          <div>
+            <h4 className="vote-login-note">
+              <span>Note: </span> You have to be logged in as a user to vote and
+              comment on this article <NavLink to="/users"> login </NavLink>
+            </h4>
+          </div>
+        ) : null}
+
         {!Object.keys(article).length ? (
           <li>
             <Loading />

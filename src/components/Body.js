@@ -59,6 +59,7 @@ function Body({ children, pageName }) {
                 onClick={() => {
                   setMode("dark");
                 }}
+                className="background-mode"
               >
                 🌚
               </li>
@@ -67,6 +68,7 @@ function Body({ children, pageName }) {
                 onClick={() => {
                   setMode("light");
                 }}
+                className="background-mode"
               >
                 ☀️
               </li>
@@ -94,7 +96,7 @@ function Body({ children, pageName }) {
                     isActive ? "isActive" : undefined
                   }
                 >
-                  Login
+                  Login as a user
                 </NavLink>
               </li>
             )}
