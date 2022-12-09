@@ -1,31 +1,43 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import Body from "../../components/Body";
+import Loading from "../../components/Loading";
 
 import { PageContext } from "../../PageContextProvider";
 
 function Articles() {
   const { articles } = useContext(PageContext);
-  console.log("POL", articles);
   return (
     <Body pageName="Articles">
       <ul className="articles-card">
-        {articles.map((article, i) => {
-          return (
-            <li key={i}>
-              <h1>{article.title}</h1>
-              <h2>{article.topic}</h2>
-              <p>
-                {article.body.substring(0, 90)}
-                {article.body.length > 90 && "..."}
-              </p>
-              <h2>Author: {article.author}</h2>
-              <section>
-                <p>{article.created_at}</p>
-                <p>Votes: {article.votes}</p>
-              </section>
-            </li>
-          );
-        })}
+        {articles.length < 1 ? (
+          <li>
+            <Loading />
+          </li>
+        ) : (
+          articles.map((article) => {
+            return (
+              <li key={article.article_id}>
+                <Link to={`/articles/article/${article.article_id}`}>
+                  <h1>Topic: {article.title}</h1>
+                  <h2>{article.topic}</h2>
+                  <p>
+                    {article.body.substring(0, 90)}
+                    {article.body.length > 90 && "..."}
+                  </p>
+                  <h2>Author: {article.author}</h2>
+                  <section>
+                    <p>
+                      Created at:{" "}
+                      {new Date(article.created_at).toLocaleString()}
+                    </p>
+                    <p>Votes: {article.votes}</p>
+                  </section>
+                </Link>
+              </li>
+            );
+          })
+        )}
       </ul>
     </Body>
   );

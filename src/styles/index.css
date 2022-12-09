@@ -22,19 +22,25 @@
     top: 0;
     width: 100%;
     flex-wrap: wrap;
+    max-width: 1300px;
 }
 
 .container-body nav ul {
     display: flex;
     list-style-type: none;
+    align-items: center;
 }
 
 a {
+    text-decoration: none;
+    color: rgb(2, 51, 20)
+}
+
+nav a {
     color: rgb(108, 108, 108);
     background-color: rgb(0, 0, 0);
     margin: 5px;
     padding: 5px 20px;
-    text-decoration: none;
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 3px;
@@ -43,6 +49,34 @@ a {
 nav li {
     margin: 0;
     padding: 0;
+}
+
+nav .username {
+    margin: 0 10px;
+    font-size: large;
+    color: rgb(114, 113, 113);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .icon-img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin: 0 5px;
+}
+
+nav .logout {
+    background-color: rgb(94, 5, 5);
+    padding: 5px 20px;
+    font-weight: bold;
+}
+
+.background-mode {
+    cursor: pointer;
+    margin: 0 7px;
 }
 
 /* container */
@@ -63,12 +97,12 @@ nav li {
 
 .light-mode {
     background-color: rgb(164, 161, 161);
-    color: #000;
+    /* color: #000 !important; */
 }
 
 .dark-mode {
     background-color: rgb(0, 0, 0);
-    color: rgb(2, 51, 20);
+    /* color: rgb(2, 51, 20) !important; */
 }
 
 .container-main_body {
@@ -115,7 +149,171 @@ nav li {
 .articles-card section {
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+}
 
+.articles-card p {
+    font-size: 18px;
+}
+
+.articles-card .article-body {
+    margin-bottom: 30px;
+}
+
+/* comments */
+.comments-container {
+    border-top: 2px dotted rgb(2, 51, 20);
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.comments-container .comments-dropdown-con {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.no-comment {
+    text-align: center;
+}
+
+/* Users */
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 10px;
+}
+
+.user-container li {
+    list-style: none;
+    background-color: rgba(89, 87, 87, 0.56);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    color: rgb(193, 193, 193);
+    border-radius: 10px;
+}
+
+.user-container h1 {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.user-container p {
+    font-size: 18px;
+    background-color: rgb(2, 51, 20);
+    color: rgb(193, 193, 193);
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
+
+.user-container span {
+    color: rgb(6, 103, 41);
+}
+
+/* form */
+.form-body {
+    background-color: rgba(85, 85, 85, 0.541);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.form-body label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.form-body .comment-text-area {
+    width: 50%;
+    margin: 10px 0;
+    padding: 5px;
+    outline: none;
+}
+
+.form-body button {
+    text-align: right;
+}
+
+.post-comment-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.post-comment-btn button {
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.post-comment-btn .send {
+    background-color: rgb(6, 103, 41);
+    ;
+}
+
+.post-comment-btn .failed {
+    background-color: rgb(174, 6, 6);
+    ;
+}
+
+.err-msg {
+    color: rgb(174, 6, 6);
+    ;
+}
+
+/* vote */
+.incVote {
+    background-color: rgb(6, 103, 41);
+    color: #fff;
+    margin: 0 3px;
+    padding: 1px 6px;
+    cursor: pointer;
+}
+
+.decVote {
+    background-color: rgb(174, 6, 6);
+    color: #fff;
+    margin: 0 3px;
+    padding: 1px 6px;
+    cursor: pointer;
+}
+
+.vote-container h4 {
+    font-size: 13px;
+    color: red;
+}
+
+.vote-login-note {
+    color: rgb(2, 51, 20);
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.vote-login-note a {
+    background-color: rgb(2, 51, 20);
+    ;
+    color: rgb(117, 115, 115);
+    margin: 0 5px;
+    padding: 3px 10px;
+}
+
+.vote-login-note span {
+    color: rgb(174, 6, 6);
 }
 
 /* media query */
